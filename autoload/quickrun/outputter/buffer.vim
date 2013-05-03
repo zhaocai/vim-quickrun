@@ -65,6 +65,8 @@ function! s:outputter.finish(session)
   let closed = self.config.close_on_empty && s:is_empty_buffer()
   if closed
     close
+  else
+    let a:session.outputter.bufnr = bufnr('%')
   endif
   call s:back_to_previous_window(!closed && self.config.into)
   redraw
